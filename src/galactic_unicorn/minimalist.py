@@ -31,7 +31,6 @@ def run():
     mc = MQTTClient('ROM-GU', MQTT_HOST)
     mc.connect()
     print('connected to %s' % MQTT_HOST)
-    # the next line cause the pro
     galactic = GalacticUnicorn() # if this is commented out, everything works
     mc.set_callback(display_level)
     print('callback set')
@@ -40,6 +39,7 @@ def run():
     while True:
         print('waiting for summat')
         mc.wait_msg()
+        time.sleep(0.001)
 
 
 OUTPUT_WHEN_WORKING = """
