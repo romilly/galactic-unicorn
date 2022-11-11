@@ -20,20 +20,21 @@ def hex_to_rgb(hex):
 def display(topic, message):
     rgbs = message.decode('UTF8')
     rgb3 = hex_to_rgb(rgbs)
-    history.pop()
-    history.append(rgb3)
-    rgb = graphics.create_pen(*rgb3)
-    show_block(rgb)
+    global history
+    history = history[1:] + [rgb3]
+    show_block()
     galactic.update(graphics)
 
 
-def show_block(rgb):
-    graphics.set_pen(rgb)
+def show_block():
     for block in range(8):
-        offset = block*6
+        offset = 5 + block*6
+        rgb3 = history[block]
+        rgb = graphics.create_pen(*rgb3)
+        graphics.set_pen(rgb)
         for x in range(6):
             for y in range(11):
-                graphics.pixel(x, y)
+                graphics.pixel(x + offset, y)
 
 
 def connect(ssid, password, max_wait=10):
@@ -62,8 +63,11 @@ def run():
 
 
 BLACK = (0,0,0)
-history = list(8*BLACK)
+history = []
+for i in range(8):
+    history.append(BLACK)
 galactic = GalacticUnicorn()
 graphics = PicoGraphics(DISPLAY_GALACTIC_UNICORN)
 run()
+
 

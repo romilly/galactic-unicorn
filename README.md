@@ -2,10 +2,8 @@
 
 Experiments with the pre-production galactic unicorn.
 
-This includes a basic [cheerlights](https://cheerlights.com/) client.
-The first version just shows a solid single-colour display across the
-whole of the Galactic Unicorn.
-
+This includes a [cheerlights](https://cheerlights.com/) client.
+This version shows cheerlights history: up to 8 recent colours in blocks 6x11.
 
 The flyer game is a work in progress, and not yet usable.
 
@@ -21,8 +19,5 @@ You'll need to
 3. Edit and save `WIFI_CONFIG.py` to contain your network id and password.
 5. Run `cheerlights.py` using Thonny, mpremote or any other tool of your choice.
 
-# Roadmap
-
-The next cheerlights version will show history.
 
 
