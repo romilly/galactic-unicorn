@@ -47,11 +47,8 @@ def run():
     mc.connect()
     print('connected to %s' % MQTT_HOST)
     mc.set_callback(display)
-    print('callback set')
     mc.subscribe('cheerlightsRGB')
-    print('subscribed')
     while True:
-        print('waiting for summat')
         mc.wait_msg()
         time.sleep(0.001)
 
