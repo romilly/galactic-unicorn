@@ -1,4 +1,7 @@
 import time
+import WIFI_CONFIG
+import network
+
 from umqtt.simple import MQTTClient
 
 from galactic import GalacticUnicorn
@@ -25,10 +28,21 @@ def display(topic, message):
             graphics.pixel(x,y)
     galactic.update(graphics)
 
+def connect(ssid, password, max_wait=10):
+    wlan = network.WLAN(network.STA_IF)
+    wlan.active(True)
+    wlan.connect(ssid, password)
+    while max_wait > 0:
+        if wlan.status() < 0 or wlan.status() >= 3:
+            break
+        max_wait -= 1
+        time.sleep(1)
+    if wlan.status() != 3:
+        raise RuntimeError('network connection failed')
+    return wlan
+
 def run():
-    print('starting')
     connect(SSID, PASSWORD)
-    print('connected to network')
     mc = MQTTClient('ROM-GU', MQTT_HOST)
     mc.connect()
     print('connected to %s' % MQTT_HOST)
