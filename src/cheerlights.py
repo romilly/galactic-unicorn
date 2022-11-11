@@ -18,15 +18,23 @@ def hex_to_rgb(hex):
 
 
 def display(topic, message):
-    print(message)
     rgbs = message.decode('UTF8')
     rgb3 = hex_to_rgb(rgbs)
+    history.pop()
+    history.append(rgb3)
     rgb = graphics.create_pen(*rgb3)
-    graphics.set_pen(rgb)
-    for x in range(53):
-        for y in range(11):
-            graphics.pixel(x,y)
+    show_block(rgb)
     galactic.update(graphics)
+
+
+def show_block(rgb):
+    graphics.set_pen(rgb)
+    for block in range(8):
+        offset = block*6
+        for x in range(6):
+            for y in range(11):
+                graphics.pixel(x, y)
+
 
 def connect(ssid, password, max_wait=10):
     wlan = network.WLAN(network.STA_IF)
@@ -53,6 +61,8 @@ def run():
         time.sleep(0.001)
 
 
+BLACK = (0,0,0)
+history = list(8*BLACK)
 galactic = GalacticUnicorn()
 graphics = PicoGraphics(DISPLAY_GALACTIC_UNICORN)
 run()
