@@ -19,5 +19,9 @@ You'll need to
 3. Edit and save `WIFI_CONFIG.py` to contain your network id and password.
 5. Run `cheerlights.py` using Thonny, mpremote or any other tool of your choice.
 
+Here's the sort of thing you'll see:
+
+![Cheerlights History Display](docs/img/cheerlight-blocks.jpg)
+
 
 
