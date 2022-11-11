@@ -10,7 +10,7 @@ The flyer game is a work in progress, and not yet usable.
 
 # Installation
 
-I'm changing the cheerlights code to use Pimoroni's networking library.
+I'm tidying up the cheerlights code.
 
 Once that's done you'll need to
 
