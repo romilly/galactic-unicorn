@@ -10,9 +10,7 @@ The flyer game is a work in progress, and not yet usable.
 
 # Installation
 
-I'm tidying up the cheerlights code.
-
-Once that's done you'll need to
+You'll need to
 
 1. Copy this repository to a directory of your choice by cloning or downloading/unzipping it.
 2. Copy`cheerlights.py` and `WIFI_CONFIG.py` from `src/galactic_unicorn` to your Unicorn, 
